@@ -3,10 +3,10 @@
   "version": "0.0.1",
   "description": "A boilerplate generator for building Gutenberg Could blocks",
   "scripts": {
-    "create-cloud-block": "node tasks/ccb.js"
+    "create-cloud-block": "node ./index.js"
   },
   "bin": {
-    "create-cloud-block": "./tasks/ccb.js"
+    "create-cloud-block": "./index.js"
   },
   "repository": {
     "type": "git",
