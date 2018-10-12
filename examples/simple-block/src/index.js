@@ -4,8 +4,8 @@ const { registerBlockType } = blocks;
 const { dispatch, select } = data;
 const { __ } = i18n;
 
-// Import each block
-import * as hero from './simple-block';
+// TODO: Import each block herer
+import * as block1 from './simple-block';
 
 
 // Category name and slug
@@ -20,8 +20,8 @@ export function registerBlocks () {
   const currentCategories = select('core/blocks').getCategories().filter(item => item.slug !== category.slug);
   dispatch('core/blocks').setCategories([ category, ...currentCategories ]);
 
-  // Register each block
-  registerBlockType(`${category.slug}/${hero.name}`, { category: category.slug, ...hero.settings });
+  // TODO: Register each block
+  registerBlockType(`${category.slug}/${block1.name}`, { category: category.slug, ...block1.settings });
 }
 
 registerBlocks();

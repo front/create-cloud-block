@@ -28,6 +28,9 @@ const BLOCK_ATTRIBUTES = {
   fontSize: {
     type: 'number',
   },
+  fontColor: {
+    type: 'string',
+  },
   backgroundColor: {
     type: 'string',
   },
@@ -53,16 +56,18 @@ export const settings = {
   attributes: BLOCK_ATTRIBUTES,
 
   edit ({ attributes, className, setAttributes }) {
-    const { title, fontSize, backgroundColor } = attributes;
+    const { title, fontSize, fontColor, backgroundColor } = attributes;
     const containerStyle = {
       backgroundColor,
     };
     const titleStyle = {
       fontSize: fontSize && `${fontSize}px`,
+      color: fontColor,
     };
 
     return (
       <Fragment>
+        {/* Block markup (main editor) */}
         <div className={ className } style={ containerStyle }>
           <RichText
             tagName="h1" value={ title } style={ titleStyle }
@@ -73,19 +78,22 @@ export const settings = {
         </div>
 
         <InspectorControls>
-          {/* Blocks settings (sidebar) */}
+          {/* Block settings (sidebar) */}
           <PanelBody title={ __('Settings') } initialOpen={ true }>
             <FontSizePicker
               fontSizes={ FONT_SIZES } fallbackFontSize={ 56 } value={ fontSize }
-              onChange={ value => setAttributes({ titleFontSize: value }) }
+              onChange={ value => setAttributes({ fontSize: value }) }
             />
           </PanelBody>
 
           <PanelColorSettings
-            title={ __('Background Color') }
-            initialOpen={ true }
+            title={ __('Colors') } initialOpen={ false }
             colorSettings={ [
               {
+                value: backgroundColor,
+                onChange: value => setAttributes({ fontColor: value }),
+                label: __('Font Color'),
+              }, {
                 value: backgroundColor,
                 onChange: value => setAttributes({ backgroundColor: value }),
                 label: __('Background Color'),
@@ -97,12 +105,13 @@ export const settings = {
   },
 
   save ({ attributes, className }) {
-    const { title, fontSize, backgroundColor } = attributes;
+    const { title, fontSize, fontColor, backgroundColor } = attributes;
     const containerStyle = {
       backgroundColor,
     };
     const titleStyle = {
       fontSize: fontSize && `${fontSize}px`,
+      color: fontColor,
     };
 
     return (
