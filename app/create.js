@@ -39,23 +39,24 @@ if (typeof projectName === 'undefined') {
 
 // 1. Create the directory
 
-const root = path.resolve(projectName);
-const appName = path.basename(root);
-const base = path.resolve('./examples/1-simple-block');
+const appRoot = path.resolve(projectName);
+const appName = path.basename(appRoot);
 
 // TODO: Check and validate the appName
 
-
 // 1.1 Create the directory
-fs.ensureDir(root);
+fs.ensureDir(appRoot);
 
-console.log(`Creating a new Cloud Block in ${chalk.green(root)}.`);
+console.log(`Creating a new Cloud Block in ${chalk.green(appRoot)}.`);
 
 
 // 1.2 Copy files from the example
+const exJson = require.resolve('../examples/1-simple-block/package.json');
+const exRoot = path.dirname(exJson);
+
 console.log(`Copying files...`);
 
-fs.copySync(base, root);
+fs.copySync(exRoot, appRoot);
 
 
 // 1.3 Rename the project files
