@@ -12,6 +12,10 @@
   "dependencies": {
     "eslint": "^5.6.1"
   },
+  "keywords": [
+    "gutenberg",
+    "create-app"
+  ],
   "homepage": "https://github.com/front/create-cloud-block#readme",
   "repository": {
     "type": "git",
