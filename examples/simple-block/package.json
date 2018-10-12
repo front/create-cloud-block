@@ -1,0 +1,48 @@
+{
+  "name": "my-simple-block",
+  "version": "0.0.1",
+  "description": "A custom block for Gutenberg Cloud",
+  "main": "build/index.js",
+  "files": [
+    "build/",
+    "screenshot.png"
+  ],
+  "gutenbergCloud": {
+    "js": "build/index.js",
+    "css": "build/style.css",
+    "screenshot": "screenshot.png",
+    "name": "My Custom Block"
+  },
+  "scripts": {
+    "build": "NODE_ENV=production webpack",
+    "deploy": "npm run build && npm publish --access public"
+  },
+  "keywords": [
+    "gutenberg",
+    "gutenberg-cloud"
+  ],
+  "engines": {
+    "node": ">=8.9.0",
+    "npm": ">=5.6.0"
+  },
+  "peerDependencies": {
+    "react": "^16.3.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-react-app": "^3.1.2",
+    "clean-webpack-plugin": "^0.1.19",
+    "css-loader": "^1.0.0",
+    "eslint": "^5.4.0",
+    "eslint-plugin-react": "^7.11.1",
+    "extract-text-webpack-plugin": "4.0.0-beta.0",
+    "node-sass": "^4.9.3",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^7.1.0",
+    "url-loader": "^1.1.1",
+    "webpack": "^4.17.1",
+    "webpack-cli": "^3.1.0"
+  }
+}
