@@ -87,7 +87,7 @@ export const settings = {
           </PanelBody>
 
           <PanelColorSettings
-            title={ __('Colors') } initialOpen={ false }
+            title={ __('Color Settings') } initialOpen={ false }
             colorSettings={ [
               {
                 value: backgroundColor,
@@ -98,7 +98,7 @@ export const settings = {
                 onChange: value => setAttributes({ backgroundColor: value }),
                 label: __('Background Color'),
               },
-            ] }></PanelColorSettings>
+            ] } />
         </InspectorControls>
       </Fragment>
     );
