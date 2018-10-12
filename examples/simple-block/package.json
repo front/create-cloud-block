@@ -1,5 +1,5 @@
 {
-  "name": "my-simple-block",
+  "name": "simple-block",
   "version": "0.0.1",
   "description": "A custom block for Gutenberg Cloud",
   "main": "build/index.js",

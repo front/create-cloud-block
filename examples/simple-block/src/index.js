@@ -5,7 +5,7 @@ const { dispatch, select } = data;
 const { __ } = i18n;
 
 // Import each block
-import * as hero from './my-simple-block';
+import * as hero from './simple-block';
 
 
 // Category name and slug
