@@ -1,36 +1,13 @@
 {
-	"parser": "babel-eslint",
-	"extends": [
-		"eslint:recommended",
-		"plugin:react/recommended"
-	],
-	"env": {
-		"browser": false,
-		"es6": true,
-		"node": true
-	},
-	"parserOptions": {
-		"sourceType": "module",
-		"ecmaFeatures": {
-			"jsx": true
-		}
-	},
-	"globals": {
-		"window": true,
-		"document": true,
-		"localStorage": true,
-		"sessionStorage": true,
-		"XMLHttpRequest": true
-	},
-	"plugins": [
-		"react"
-	],
-	"settings": {
-		"react": {
-			"pragma": "React"
-		}
-	},
-	"rules": {
+  "parserOptions": {
+    "ecmaVersion": 2018
+  },
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "extends": "eslint:recommended",
+  "rules": {
 		"arrow-parens": ["warn", "as-needed"],
 		"arrow-spacing": "warn",
 		"block-scoped-var": "warn",
@@ -38,7 +15,6 @@
 			"allowSingleLine": true
 		}],
 
-		"comma-dangle": [ "warn", "always-multiline" ],
 		"comma-spacing": "warn",
 		"comma-style": "warn",
 
@@ -67,7 +43,7 @@
 		"no-extra-label": "warn",
 		"no-floating-decimal": "warn",
 		"no-lonely-if": "warn",
-		"no-mixed-operators": "warn",
+		"no-mixed-operators": "off",
 		"no-multi-str": "error",
 		"no-negated-in-lhs": "warn",
 		"no-shadow": "warn",
@@ -83,7 +59,6 @@
 		"object-curly-spacing": [ "error", "always" ],
 		"prefer-const": "warn",
 		"prefer-rest-params": "warn",
-		"quote-props": [ "error", "as-needed" ],
 		"quotes": [ "warn", "single", {
 			"allowTemplateLiterals": true
 		}],
@@ -102,23 +77,9 @@
 		"yield-star-spacing": "warn",
 
 		"valid-jsdoc": ["warn", {
-			"requireReturn": false,
-			"requireReturnDescription": false,
-			"requireParamDescription": false
-		}],
-
-		"react/display-name": "off",
-		"react/jsx-curly-spacing": "off",
-		"react/jsx-equals-spacing": "error",
-		"react/jsx-indent": [ "warn", 2 ],
-		"react/jsx-indent-props": [ "warn", 2 ],
-		"react/jsx-key": "error",
-		"react/jsx-uses-react": "error",
-		"react/jsx-uses-vars": "error",
-		"react/jsx-tag-spacing": "warn",
-		"react/no-children-prop": "off",
-		"react/no-find-dom-node": "warn",
-		"react/no-unescaped-entities": "off",
-		"react/prop-types": "off"
-	}
+      "requireReturn": false,
+      "requireReturnDescription": false,
+      "requireParamDescription": false
+    }]
+  }
 }

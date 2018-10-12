@@ -2,20 +2,23 @@
   "name": "create-cloud-block",
   "version": "0.0.1",
   "description": "A boilerplate generator for building Gutenberg Could blocks",
+  "author": "Frontkom <frontkom@frontkom.no>",
   "scripts": {
     "create-cloud-block": "node ./index.js"
   },
   "bin": {
     "create-cloud-block": "./index.js"
   },
+  "dependencies": {
+    "eslint": "^5.6.1"
+  },
+  "homepage": "https://github.com/front/create-cloud-block#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/front/create-cloud-block.git"
   },
-  "author": "Frontkom <frontkom@frontkom.no>",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/front/create-cloud-block/issues"
   },
-  "homepage": "https://github.com/front/create-cloud-block#readme"
+  "license": "MIT"
 }
