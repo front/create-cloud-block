@@ -20,7 +20,10 @@ function replaceStringInFile (root, file, oldStr, newStr) {
 
 module.exports = {
   updatePkg (root, project) {
-    replaceStringInFile(root, 'package.json', example, project);
+    const pkg = require(path.resolve(root, 'package.json'));
+    pkg.name = project;
+    pkg.files = ['build/', 'screenshot.png'];
+    fs.writeFileSync(path.resolve(root, 'package.json'), JSON.stringify(pkg, null, 2));
   },
 
   updateFiles (root, app) {
