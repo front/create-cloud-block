@@ -9,10 +9,9 @@ This generator is inspired by both [Create React App](https://github.com/faceboo
 ```
 $ npx create-cloud-block my-block
 $ cd my-block
-$ npm start
 ```
 
-Then open http://localhost:3000/ to see your block running on an instance of the Gutenberg-js editor.
+You can now start editing the block.  Once you're ready you can follow the deployment steps.
 
 
 ## Deployment
