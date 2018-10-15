@@ -49,11 +49,9 @@ if(!valid.validForNewPackages) {
   process.exit(1);
 }
 
-const appRoot = path.resolve(projectName);
-const appName = path.basename(appRoot);
-
 
 // 2. Create the directory
+const appRoot = path.resolve(projectName);
 fs.ensureDirSync(appRoot);
 
 const appFiles = [
@@ -89,7 +87,24 @@ fs.copySync(exRoot, appRoot);
 
 
 // 4. Rename the project files
-console.log(`Renaming the example to ${appName}`);
+const appName = path.basename(appRoot);
+console.log(`Renaming the example to ${chalk.green(appName)}`);
+
+function replaceStringInFile (root, file, oldStr, newStr) {
+  let data = fs.readFileSync(path.resolve(root, file)).toString();
+  data = data.replace(oldStr, newStr);
+  fs.writeFileSync(path.resolve(root, file), data);
+}
+
+replaceStringInFile(appRoot, 'package.json', 'simple-block', projectName);
+[
+  'src/index.js',
+  'src/simple-block/index.js',
+  'src/simple-block/style.scss',
+]
+.forEach(file => replaceStringInFile(appRoot, file, 'simple-block', appName));
+
+fs.moveSync(path.resolve(appRoot, 'src/simple-block'), path.resolve(appRoot, `src/${appName}`));
 
 
 // 5. Install packages
