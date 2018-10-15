@@ -1,66 +1,62 @@
 'use strict';
 
-const packageJson = require('../package.json');
-
-const chalk = require('chalk');
-const commander = require('commander');
+const pkg = require('../package.json');
 const fs = require('fs-extra');
 const path = require('path');
 
+const chalk = require('chalk');
+const argv = require('minimist')(process.argv.slice(2));
+const projectName = argv._[0];
 
-let projectName;
 
-const program = new commander.Command(packageJson.name)
-.version(packageJson.version)
-.arguments('<project-directory>')
-.usage(`${chalk.green('<project-directory>')} [options]`)
-.action(name => {
-  projectName = name;
-})
-.allowUnknownOption()
-.on('--help', () => {
+// 0. Check input
+if(argv.version || argv.v) {
+  console.log(pkg.version);
+  process.exit(0);
+}
+
+if(argv.help || argv.h) {
   console.log(`  Only ${chalk.green('<project-directory>')} is required.`);
   console.log();
-})
-.parse(process.argv);
+  console.log('For example:');
+  console.log(`  ${chalk.cyan(pkg.name)} ${chalk.green('my-block')}`);
+  process.exit(0);
+}
 
-if (typeof projectName === 'undefined') {
+if (!projectName) {
   console.error('Please specify the project directory:');
-  console.log(`  ${chalk.cyan(program.name())} ${chalk.green('<project-directory>')}`);
+  console.log(`  ${chalk.cyan(pkg.name)} ${chalk.green('<project-directory>')}`);
   console.log();
   console.log('For example:');
-  console.log(`  ${chalk.cyan(program.name())} ${chalk.green('my-block')}`);
-  console.log();
-  console.log(`Run ${chalk.cyan(`${program.name()} --help`)} to see all options.`);
+  console.log(`  ${chalk.cyan(pkg.name)} ${chalk.green('my-block')}`);
   process.exit(1);
 }
 
 
-
-// 1. Create the directory
-
+// 1. Validate the project name
 const appRoot = path.resolve(projectName);
 const appName = path.basename(appRoot);
 
-// TODO: Check and validate the appName
 
-// 1.1 Create the directory
+// 2. Create the directory
 fs.ensureDir(appRoot);
-
 console.log(`Creating a new Cloud Block in ${chalk.green(appRoot)}.`);
 
 
-// 1.2 Copy files from the example
-const exJson = require.resolve('../examples/1-simple-block/package.json');
-const exRoot = path.dirname(exJson);
-
-console.log(`Copying files...`);
+// 3. Copy files from the example
+const exRoot = path.resolve(__dirname, '../examples/1-simple-block');
+console.log(`Copying example files...`);
 
 fs.copySync(exRoot, appRoot);
 
 
-// 1.3 Rename the project files
-console.log(`Renaming the project to ${appName}`);
+// 4. Rename the project files
+console.log(`Renaming the example to ${appName}`);
 
 
+// 5. Install packages
+console.log('Installing packages. This might take a couple of minutes.');
+
+
+// 6. Cleanup and finish
 console.log(chalk.green('Done!'));

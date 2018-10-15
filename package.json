@@ -1,6 +1,6 @@
 {
   "name": "create-cloud-block",
-  "version": "0.0.5",
+  "version": "0.0.9",
   "description": "A boilerplate generator for building Gutenberg Could blocks",
   "author": "Frontkom <frontkom@frontkom.no>",
   "scripts": {
@@ -11,10 +11,10 @@
   },
   "dependencies": {
     "chalk": "^2.4.1",
-    "commander": "^2.19.0",
     "envinfo": "^5.10.0",
     "eslint": "^5.6.1",
-    "fs-extra": "^7.0.0"
+    "fs-extra": "^7.0.0",
+    "minimist": "^1.2.0"
   },
   "keywords": [
     "gutenberg",
