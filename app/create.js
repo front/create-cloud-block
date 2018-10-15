@@ -44,4 +44,20 @@ install.runNPM(appRoot);
 
 
 // 7. Cleanup and finish
-console.log(chalk.green('Done!'));
+console.log(`Success! Created ${chalk.green(projectName)} at ${appRoot}`);
+console.log(`Inside that directory, you can run several commands:`);
+// console.log();
+// console.log(`  ${chalk.cyan('npm start')}`);
+// console.log(`    Starts the development editor.`);
+console.log();
+console.log(`  ${chalk.cyan('npm run build')}`);
+console.log(`    Bundles the app into static files for production.`);
+console.log();
+console.log(`  ${chalk.cyan('npm publish')}`);
+console.log(`    Publish the production static files to NPM.`);
+console.log();
+console.log(`You can start by typing:`);
+console.log(`  ${chalk.cyan('cd')} ${chalk.green(projectName)}`);
+// console.log(`  ${chalk.cyan('npm start')}`);
+console.log();
+console.log('🚀');
