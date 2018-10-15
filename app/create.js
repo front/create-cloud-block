@@ -3,6 +3,7 @@
 const pkg = require('../package.json');
 const fs = require('fs-extra');
 const path = require('path');
+const validatePkgName = require('validate-npm-package-name');
 
 const chalk = require('chalk');
 const argv = require('minimist')(process.argv.slice(2));
@@ -34,12 +35,49 @@ if (!projectName) {
 
 
 // 1. Validate the project name
+const valid = validatePkgName(projectName);
+if(!valid.validForNewPackages) {
+  console.error(`  Sorry, ${chalk.red(projectName)} is not a valid NPM project name`);
+  if(valid.errors) {
+    console.log('Error:');
+    console.log(`  ${chalk.yellow(valid.errors.join('; '))}`);
+  }
+  if(valid.warnings) {
+    console.log('Warning:');
+    console.log(`  ${chalk.yellow(valid.warnings.join('; '))}`);
+  }
+  process.exit(1);
+}
+
 const appRoot = path.resolve(projectName);
 const appName = path.basename(appRoot);
 
 
 // 2. Create the directory
-fs.ensureDir(appRoot);
+fs.ensureDirSync(appRoot);
+
+const appFiles = [
+  '.babelrc',
+  '.eslintrc',
+  '.gitignore',
+  'README.md',
+  'package.json',
+  'screenshot.png',
+  'src',
+  'webpack.config.js',
+];
+
+const conflicts = fs.readdirSync(appRoot).filter(file => appFiles.includes(file));
+if(conflicts.length > 0) {
+  console.log(`The directory ${chalk.green(projectName)} contains files that could conflict:`);
+  console.log();
+  for (const file of conflicts) {
+    console.log(`  ${file}`);
+  }
+  console.log();
+  console.log('Either try using a new directory name, or remove the files listed above.');
+  process.exit(1);
+}
 console.log(`Creating a new Cloud Block in ${chalk.green(appRoot)}.`);
 
 
