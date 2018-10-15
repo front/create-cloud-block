@@ -1,25 +1,22 @@
 'use strict';
 
-const fs = require('fs-extra');
 const path = require('path');
 const chalk = require('chalk');
 
 const input = require('./input');
 const validate = require('./validate');
 const rename = require('./rename');
+const install = require('./install');
 
 
-// 0. Check input
+// 1. Get and validate the project name
 const projectName = input.getProjectName();
-
-
-// 1. Validate the project name
 validate.checkProjectName(projectName);
 
 
 // 2. Create the directory
 const appRoot = path.resolve(projectName);
-fs.ensureDirSync(appRoot);
+install.createDir(appRoot);
 
 
 // 3. Check for file conflicts
@@ -28,10 +25,8 @@ console.log(`Creating a new Cloud Block in ${chalk.green(appRoot)}`);
 
 
 // 4. Copy files from the example
-const example = path.resolve(__dirname, '../examples/1-simple-block');
 console.log('Copying example files...');
-
-fs.copySync(example, appRoot);
+install.copyExample(appRoot);
 
 
 // 5. Rename the project files
@@ -45,6 +40,7 @@ rename.renameBlock(appRoot, appName);
 
 // 6. Install packages
 console.log('Installing packages. This might take a couple of minutes.');
+install.runNPM(appRoot);
 
 
 // 7. Cleanup and finish
