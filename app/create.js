@@ -25,13 +25,12 @@ console.log(`Creating a new Cloud Block in ${chalk.green(appRoot)}`);
 
 
 // 4. Copy files from the example
-console.log('Copying example files...');
+console.log('Extracting example files');
 install.copyExample(appRoot);
 
 
 // 5. Rename the project files
 const appName = path.basename(appRoot);
-console.log(`Renaming the example to ${chalk.green(appName)}`);
 
 rename.updatePkg(appRoot, projectName);
 rename.updateFiles(appRoot, appName);

@@ -20,6 +20,7 @@ module.exports = {
       console.log();
       console.log('For example:');
       console.log(`  ${chalk.cyan(pkg.name)} ${chalk.green('my-block')}`);
+      console.log();
       process.exit(0);
     }
 
@@ -29,6 +30,7 @@ module.exports = {
       console.log();
       console.log('For example:');
       console.log(`  ${chalk.cyan(pkg.name)} ${chalk.green('my-block')}`);
+      console.log();
       process.exit(1);
     }
 

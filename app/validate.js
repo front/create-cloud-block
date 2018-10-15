@@ -10,13 +10,16 @@ module.exports = {
     const valid = validatePkgName(projectName);
     if(!valid.validForNewPackages) {
       console.error(`Sorry, ${chalk.red(projectName)} is not a valid NPM project name`);
+      console.log();
       if(valid.errors) {
         console.log('Error:');
         console.log(`  ${chalk.yellow(valid.errors.join('; '))}`);
+        console.log();
       }
       if(valid.warnings) {
         console.log('Warning:');
         console.log(`  ${chalk.yellow(valid.warnings.join('; '))}`);
+        console.log();
       }
       process.exit(1);
     }
