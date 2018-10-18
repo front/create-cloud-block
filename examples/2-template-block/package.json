@@ -11,6 +11,7 @@
   },
   "scripts": {
     "build": "NODE_ENV=production webpack",
+    "start": "npm run build && BLOCK_DIR=$PWD npm --prefix node_modules/@frontkom/g-editor start",
     "deploy": "npm run build && npm publish --access public"
   },
   "keywords": [
@@ -25,6 +26,7 @@
     "react": "^16.3.1"
   },
   "devDependencies": {
+    "@frontkom/g-editor": "~0.1.4",
     "babel-core": "^6.26.3",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.1.5",

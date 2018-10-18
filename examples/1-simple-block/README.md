@@ -6,7 +6,7 @@ Below you will find some information on how to run scripts.
 
 ## `npm start`
 - Use to compile and run the block in development mode.
-- Watches for any changes and reports back any errors in your code.
+- Live reload is not supported currently.
 
 
 ## `npm run build`
