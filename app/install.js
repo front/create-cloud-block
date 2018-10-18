@@ -15,6 +15,11 @@ module.exports = {
     fs.copySync(example, root);
   },
 
+  addGitIgnore (root) {
+    const data = ['build', 'node_modules', 'package-lock.json', ''].join('\n');
+    fs.writeFileSync(path.resolve(root, '.gitignore'), data);
+  },
+
   runNPM (root) {
     return spawn.sync(
       'npm',
