@@ -12,11 +12,12 @@
   "dependencies": {
     "chalk": "^2.4.1",
     "cross-spawn": "^6.0.5",
-    "envinfo": "^5.10.0",
-    "eslint": "^5.6.1",
     "fs-extra": "^7.0.0",
     "minimist": "^1.2.0",
     "validate-npm-package-name": "^3.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.6.1"
   },
   "keywords": [
     "gutenberg",
