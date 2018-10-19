@@ -19,10 +19,14 @@ function replaceStringInFile (root, file, oldStr, newStr) {
 
 
 module.exports = {
-  updatePkg (root, project) {
+  updatePkg (root, project, includeEditor = true) {
     const pkg = require(path.resolve(root, 'package.json'));
     pkg.name = project;
     pkg.files = ['build/', 'screenshot.png'];
+    if(!includeEditor) {
+      delete pkg.devDependencies['@frontkom/g-editor'];
+      delete pkg.scripts.start;
+    }
     fs.writeFileSync(path.resolve(root, 'package.json'), JSON.stringify(pkg, null, 2));
   },
 

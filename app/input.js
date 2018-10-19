@@ -7,8 +7,11 @@ const pkg = require('../package.json');
 
 module.exports = {
   getProjectName () {
-    const argv = minimist(process.argv.slice(2));
+    const argv = minimist(process.argv.slice(2), {
+      boolean: true,
+    });
     const projectName = argv._[0];
+    const includeEditor = !argv['exclude-editor'];
 
     if(argv.version || argv.v) {
       console.log(pkg.version);
@@ -34,6 +37,6 @@ module.exports = {
       process.exit(1);
     }
 
-    return projectName;
+    return { projectName, includeEditor };
   }
 };

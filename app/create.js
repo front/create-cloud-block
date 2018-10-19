@@ -10,7 +10,7 @@ const install = require('./install');
 
 
 // 1. Get and validate the project name
-const projectName = input.getProjectName();
+const { projectName, includeEditor } = input.getProjectName();
 validate.checkProjectName(projectName);
 
 
@@ -33,7 +33,7 @@ install.addGitIgnore(appRoot);
 // 5. Rename the project files
 const appName = path.basename(appRoot);
 
-rename.updatePkg(appRoot, projectName);
+rename.updatePkg(appRoot, projectName, includeEditor);
 rename.updateFiles(appRoot, appName);
 rename.renameBlock(appRoot, appName);
 
@@ -46,9 +46,11 @@ install.runNPM(appRoot);
 // 7. Cleanup and finish
 console.log(`Success! Created ${chalk.green(projectName)} at ${appRoot}`);
 console.log(`Inside that directory, you can run several commands:`);
-console.log();
-console.log(`  ${chalk.cyan('npm start')}`);
-console.log(`    Starts the development editor (no live reload currently).`);
+if(includeEditor) {
+  console.log();
+  console.log(`  ${chalk.cyan('npm start')}`);
+  console.log(`    Starts the development editor (no live reload currently).`);
+}
 console.log();
 console.log(`  ${chalk.cyan('npm run build')}`);
 console.log(`    Bundles the app into static files for production.`);
@@ -58,6 +60,8 @@ console.log(`    Publish the production static files to NPM.`);
 console.log();
 console.log(`You can start by typing:`);
 console.log(`  ${chalk.cyan('cd')} ${chalk.green(projectName)}`);
-console.log(`  ${chalk.cyan('npm start')}`);
+if(includeEditor) {
+  console.log(`  ${chalk.cyan('npm start')}`);
+}
 console.log();
 console.log('🚀');
