@@ -13,6 +13,6 @@ Below you will find some information on how to run scripts.
 - Use to build production code for your block inside `build` folder.
 
 
-## `npm publish`
+## `npm run deploy`
  - Use to publish the block to NPM
  - It will become available in Gutenberg Cloud in a few minutes
