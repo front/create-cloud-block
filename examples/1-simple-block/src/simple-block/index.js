@@ -27,6 +27,7 @@ const BLOCK_ATTRIBUTES = {
   },
   fontSize: {
     type: 'number',
+    default: 56,
   },
   fontColor: {
     type: 'string',
