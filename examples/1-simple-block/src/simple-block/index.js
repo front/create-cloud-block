@@ -22,7 +22,7 @@ const BLOCK_ATTRIBUTES = {
   title: {
     type: 'array',
     source: 'children',
-    selector: 'h2',
+    selector: 'h1',
     default: 'My Custom Block',
   },
   fontSize: {
@@ -117,7 +117,7 @@ export const settings = {
 
     return (
       <div className={ className } style={ containerStyle }>
-        <h1 style={ titleStyle }>{ title }</h1>
+        <RichText.Content tagName="h1" style={ titleStyle } value={ title } />
       </div>
     );
   },
