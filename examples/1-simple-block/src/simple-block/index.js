@@ -91,7 +91,7 @@ export const settings = {
             title={ __('Color Settings') } initialOpen={ false }
             colorSettings={ [
               {
-                value: backgroundColor,
+                value: fontColor,
                 onChange: value => setAttributes({ fontColor: value }),
                 label: __('Font Color'),
               }, {
