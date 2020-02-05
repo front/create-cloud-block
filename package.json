@@ -1,6 +1,6 @@
 {
   "name": "create-cloud-block",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "A boilerplate generator for building Gutenberg Cloud blocks",
   "main": "index.js",
   "scripts": {
