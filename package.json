@@ -42,7 +42,21 @@
     "LICENSE",
     "index.js",
     "app/*",
-    "examples/1-simple-block/*",
-    "examples/2-template-block/*"
+    "examples/1-simple-block/.babelrc",
+    "examples/1-simple-block/.eslintrc",
+    "examples/1-simple-block/.gitignore",
+    "examples/1-simple-block/README.md",
+    "examples/1-simple-block/package.json",
+    "examples/1-simple-block/screenshot.png",
+    "examples/1-simple-block/src/*",
+    "examples/1-simple-block/webpack.config.js",
+    "examples/2-template-block/.babelrc",
+    "examples/2-template-block/.eslintrc",
+    "examples/2-template-block/.gitignore",
+    "examples/2-template-block/README.md",
+    "examples/2-template-block/package.json",
+    "examples/2-template-block/screenshot.png",
+    "examples/2-template-block/src/*",
+    "examples/2-template-block/webpack.config.js"
   ]
 }
