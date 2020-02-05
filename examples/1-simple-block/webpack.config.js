@@ -1,19 +1,24 @@
 const path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const cleanBuild = new CleanWebpackPlugin(['build']);
+const cleanBuild = new CleanWebpackPlugin({
+  cleanOnceBeforeBuildPatterns: ['build'],
+});
 const blockCSS = new ExtractTextPlugin('style.css');
 const editorCSS = new ExtractTextPlugin('editor.css');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    index: './src/index.js',
+    // scripts: './src/scripts.js',
+  },
   externals: {
     react: 'React',
     wp: 'wp',
   },
   output: {
-    filename: 'index.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'build'),
     libraryTarget: 'umd',
   },
